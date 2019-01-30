@@ -1,7 +1,9 @@
 export PATHDOTFILES="$HOME/.dotfiles"
 
 # create dotfiles dir
-cp -r $PWD $PATHDOTFILES
+if [ ! -d "$PATHDOTFILES" ]; then
+	cp -r $PWD $PATHDOTFILES;
+fi
 
 if [ ! -f "$PATHDOTFILES/install_lock" ]; then
     echo "Please install modules first!";
