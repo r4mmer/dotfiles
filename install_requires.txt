@@ -1,4 +1,4 @@
 git
 git-flow
-bash_completion
+bash-completion
 dnsutils
