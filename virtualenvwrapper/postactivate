@@ -1,0 +1,5 @@
+#!/bin/bash
+# This hook is sourced after every virtualenv is activated.
+
+ve_dir="$PROJECT_HOME"/`basename $VIRTUAL_ENV`
+cd "$ve_dir"
