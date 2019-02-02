@@ -1,5 +1,5 @@
 # Add '~/bin' to PATH
-export PATH="$HOME/bin:$PATH";
+export PATH="$HOME/.bin:$PATH";
 
 # work with installed dotfiles
 export PATHDOTFILES="$HOME/.dotfiles"

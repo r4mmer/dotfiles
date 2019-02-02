@@ -1,4 +1,10 @@
 [alias]
+	# pretty logs
+	lg = !"git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(auto)%d%n''          %C(white)%s%C(reset)%n''          %C(dim white)<%an>%C(reset)'"
+	# all the pretty logs
+	lga = !"git lg --all"
+	# hmmm, maybe not, but maybe yes?
+	wip = commit -m "WIP"
 
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
@@ -86,51 +92,59 @@
 
 [core]
 
+	# XXX
 	# Use custom `.gitignore` and `.gitattributes`
-	excludesfile = ~/.gitignore
-	attributesfile = ~/.gitattributes
+	# excludesfile = ~/.gitignore
+	# attributesfile = ~/.gitattributes
 
 	# Treat spaces before tabs and all kinds of trailing whitespace as an error
 	# [default] trailing-space: looks for spaces at the end of a line
 	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
 	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
+	# XXX
 	# Make `git rebase` safer on macOS
 	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
-	trustctime = false
+	# trustctime = false
 
+	# XXX
 	# Prevent showing files whose names contain non-ASCII symbols as unversioned.
 	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
-	precomposeunicode = false
+	# precomposeunicode = false
 
+	# XXX
 	# Speed up commands involving untracked files such as `git status`.
 	# https://git-scm.com/docs/git-update-index#_untracked_cache
-	untrackedCache = true
+	# untrackedCache = true
+
+	# use vim as default editor in git operations
+	editor = vim
 
 [color]
 
+	# XXX
 	# Use colors in Git commands that are capable of colored output when
 	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
-	ui = auto
+	# ui = auto
 
-[color "branch"]
-
-	current = yellow reverse
-	local = yellow
-	remote = green
-
-[color "diff"]
-
-	meta = yellow bold
-	frag = magenta bold # line info
-	old = red # deletions
-	new = green # additions
-
-[color "status"]
-
-	added = yellow
-	changed = green
-	untracked = cyan
+# [color "branch"]
+#
+# 	current = yellow reverse
+# 	local = yellow
+# 	remote = green
+#
+# [color "diff"]
+#
+# 	meta = yellow bold
+# 	frag = magenta bold # line info
+# 	old = red # deletions
+# 	new = green # additions
+#
+# [color "status"]
+#
+# 	added = yellow
+# 	changed = green
+# 	untracked = cyan
 
 [diff]
 
@@ -152,12 +166,19 @@
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
 
-[push]
+	# use vimdiff when fixing merge conflicts with diff3 style
+	tool = vimdiff
+	conflictstyle = diff3
 
-	# https://git-scm.com/docs/git-config#git-config-pushdefault
-	default = simple
-	# Make `git push` push relevant annotated tags when pushing branches out.
-	followTags = true
+[mergetool]
+	KeepBackup = false
+
+# [push]
+#
+# 	# https://git-scm.com/docs/git-config#git-config-pushdefault
+# 	default = simple
+# 	# Make `git push` push relevant annotated tags when pushing branches out.
+# 	followTags = true
 
 # URL shorthands
 
