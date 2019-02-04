@@ -2,3 +2,6 @@ git
 git-flow
 bash-completion
 dnsutils
+nvim
+python3-pip
+wget
