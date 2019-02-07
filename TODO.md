@@ -1,9 +1,3 @@
-refactor:
-	.functions > project
+LICENSE - make an url?
 
-# TODO
-vim instalation
-	- prefer neovim?
-	- install vim?
-	- install packages?
-	- configure on setup?
+test configuration and installation
