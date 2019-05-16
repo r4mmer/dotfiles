@@ -69,6 +69,18 @@ function getcertnames() {
 	fi;
 }
 
+function hitme() {
+        # for fun, don't install these...
+        # but if you want, it's (fortune, cowsay, lolcat and figlet)
+        # use figlet + cowsay -n
+        # fortune | cowsay -f eyes | lolcat
+        # COLOR=0
+        # FORTUNE=0
+        # BIGLETTERS=0
+        # PETART="eyes"
+        fortune | cowsay -f eyes | lolcat
+}
+
 # project() {
 #    create_project() {
 #          name=$1

@@ -18,6 +18,7 @@ set expandtab " Insert spaces when TAB is pressed.
 set backspace=indent,eol,start " make that backspace key work the way it should
 set modeline " Enable modeline
 set modelines=5
+set nowrap
 " let c_comment_strings=1 " Highlight strings in C comments
 " set laststatus=2 " make status line visible
 " set showmode " show the current mode
@@ -57,10 +58,10 @@ nnoremap <A-e> :tabnext<CR>
 inoremap <A-q> <Esc>:tabprevious<CR>
 inoremap <A-e>   <Esc>:tabnext<CR>
 " open/close tabs
-nnoremap <A-p> :tabnew<CR>
-nnoremap <A-Delete> :tabclose<CR>
-inoremap <A-p> <Esc>:tabnew<CR>
-inoremap <A-Delete> <Esc>:tabclose<CR>
+nnoremap <A-w> :tabnew<CR>
+nnoremap <A-d> :tabclose<CR>
+inoremap <A-w> <Esc>:tabnew<CR>
+inoremap <A-d> <Esc>:tabclose<CR>
 
 "split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -107,7 +108,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Search with C-P
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Vue syntax
 Plug 'posva/vim-vue'
@@ -115,6 +116,8 @@ Plug 'posva/vim-vue'
 " Jinja syntax
 Plug 'lepture/vim-jinja'
 
+" Editorconfig
+Plug 'editorconfig/editorconfig-vim'
 " see https://github.com/sbdchd/neoformat
 
 " Initialize plugin system
@@ -142,6 +145,15 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
 " airline theme, see 'vim-airline/vim-airline-themes' (or :AirlineTheme)
 let g:airline_theme='alduin'
+
+" Search from current directory instead of project root
+let g:ctrlp_working_path_mode = 0
+" Ignore these directories
+set wildignore+=*/out/**
+set wildignore+=*/vendor/**
+" Search in specific directory (apiman for testing)
+cnoremap %proj <c-r>=expand('~/projects')<cr>
+map <Leader>ga :CtrlP %proj/apiman/<cr>
 
 " Nerdtree commands
 " autocmd VimEnter * NERDTree

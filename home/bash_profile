@@ -7,7 +7,11 @@ export PATHDOTFILES="$HOME/.dotfiles"
 # enable virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
-source /usr/local/bin/virtualenvwrapper.sh
+if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
+  source /usr/local/bin/virtualenvwrapper.sh
+else
+  source $HOME/.local/bin/virtualenvwrapper.sh
+fi
 
 # load dotfiles from $PATHDOTFILES
 for file in $PATHDOTFILES/.{exports,aliases,functions}; do
@@ -28,6 +32,11 @@ shopt -s cdspell;
 if [ -f /etc/bash_completion ]; then
         source /etc/bash_completion;
 fi;
+
+for completion_file in $PATHDOTFILES/completion/*; do
+  source "$completion_file"
+done
+unset completion_file
 
 # XXX: is this not included in /etc/bash_completion ??
 # if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then

@@ -5,3 +5,6 @@ dnsutils
 neovim
 python3-pip
 wget
+figlet
+cowsay
+lolcat
